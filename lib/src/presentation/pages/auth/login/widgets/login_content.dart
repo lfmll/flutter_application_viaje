@@ -14,7 +14,7 @@ class LoginContent extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,      
       children: [
         ClipPath(
-          clipper: WaveClipperTwo(),
+          clipper: OvalBottomBorderClipper(),
           child: Container(
             height: MediaQuery.of(context).size.height * 0.35,
             color: BASE_COLOR,
@@ -60,6 +60,7 @@ class LoginContent extends StatelessWidget {
             onChanged: (value) {
               vm.changeEmail(value);
             },
+            error: vm.state.email.error,
             label: 'Correo Electronico',
             icon: Icons.email_outlined,
           ),
@@ -70,6 +71,7 @@ class LoginContent extends StatelessWidget {
             onChanged: (value) {
               vm.changeEmail(value);
             },
+            error: vm.state.password.error,
             label: 'Password',
             icon: Icons.key_outlined,
             ),
