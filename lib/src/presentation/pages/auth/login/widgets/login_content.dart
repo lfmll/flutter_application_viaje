@@ -94,13 +94,18 @@ class LoginContent extends StatelessWidget {
         Container(
           alignment: Alignment.center,
           margin: EdgeInsets.only(bottom: 40),
-          child: Text(
+          child: GestureDetector(
+            onTap:() {
+              Navigator.pushNamed(context, 'register');
+            },
+            child: Text(
             "No tienes cuenta?",
             style: TextStyle(
               color: Colors.grey, 
               fontSize: 18 
-              )
+              ),
             ),
+          ),
         )
       ],    
     );

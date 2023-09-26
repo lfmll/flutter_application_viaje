@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' show BuildContext, ColorScheme, Colors, MaterialApp, StatelessWidget, ThemeData, Widget, runApp;
 import 'package:flutter_application_viaje/src/presentation/pages/auth/login/login_page.dart';
 import 'package:flutter_application_viaje/src/presentation/pages/auth/login/login_viewmodel.dart';
+import 'package:flutter_application_viaje/src/presentation/pages/auth/register/register_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
         // debugShowCheckedModeBanner: false,
         initialRoute: 'login',
         routes: {
-          'login':(BuildContext context) => LoginPage()
+          'login':(BuildContext context) => LoginPage(),
+          'register' :(BuildContext context) => RegisterPage()
         },
       ),
     );
