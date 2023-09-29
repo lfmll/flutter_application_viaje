@@ -2,6 +2,7 @@ import 'package:flutter/material.dart' show BuildContext, ColorScheme, Colors, M
 import 'package:flutter_application_viaje/src/presentation/pages/auth/login/login_page.dart';
 import 'package:flutter_application_viaje/src/presentation/pages/auth/login/login_viewmodel.dart';
 import 'package:flutter_application_viaje/src/presentation/pages/auth/register/register_page.dart';
+import 'package:flutter_application_viaje/src/presentation/pages/auth/register/register_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=> LoginViewModel())
+        ChangeNotifierProvider(create: (context)=> LoginViewModel()),
+        ChangeNotifierProvider(create: (context)=> RegisterViewModel())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

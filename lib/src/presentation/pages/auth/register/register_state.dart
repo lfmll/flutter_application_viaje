@@ -22,11 +22,23 @@ class RegisterState {
       password.value.isEmpty ||
       password.error.isNotEmpty ||
       confirmPassword.value.isEmpty ||
-      confirmPassword.error.isNotEmpty 
+      confirmPassword.error.isNotEmpty ||
+      (password.value != confirmPassword.value)
     ) {
       return false;      
     }
     return true;
   }
-
+  
+  RegisterState copyWith({
+    ValidationItem? username,
+    ValidationItem? email,
+    ValidationItem? password,
+    ValidationItem? confirmPassword,
+  })=> RegisterState(
+    username: username ?? this.username,
+    email: email ?? this.email,
+    password: password ?? this.password,
+    confirmPassword: confirmPassword ?? this.confirmPassword
+  );
 }

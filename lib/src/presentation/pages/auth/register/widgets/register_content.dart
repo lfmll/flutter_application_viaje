@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_viaje/src/presentation/pages/auth/register/register_viewmodel.dart';
 import 'package:flutter_application_viaje/src/presentation/utils/base_color.dart';
 import 'package:flutter_application_viaje/src/presentation/widgets/default_textfield.dart';
 import 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+import 'package:provider/provider.dart';
 
 class RegisterContent extends StatelessWidget {
-  const RegisterContent({super.key});
+  RegisterViewModel vm;
+  RegisterContent(this.vm);
 
   @override
   Widget build(BuildContext context) {
+    
     return Column(      
       children: [
         ClipPath(
@@ -50,12 +54,16 @@ class RegisterContent extends StatelessWidget {
             ],
           ),
         ),
+        Spacer(),
         Container(
           margin: EdgeInsets.symmetric(horizontal: 15),
-          child: DefaultTextField(
+          child: DefaultTextField(            
+            onChanged: (value) {
+              vm.changeUsername(value);
+            },
+            error: vm.state.username.error,
             label: 'Nombre de Usuario',
-            icon: Icons.person_2_outlined,
-            onChanged: (value) {},
+            icon: Icons.person_2_outlined,            
             ),
           ),  
           Container(
@@ -63,7 +71,10 @@ class RegisterContent extends StatelessWidget {
             child: DefaultTextField(
               label: 'Correo Electronico',
               icon: Icons.email_outlined,
-              onChanged: (value) {}
+              error: vm.state.email.error,
+              onChanged: (value) {
+                vm.changeEmail(value);
+              }
             ),              
           ),
           Container(
@@ -71,23 +82,31 @@ class RegisterContent extends StatelessWidget {
             child: DefaultTextField(
               label: 'Password',
               icon: Icons.lock_outline,
-              onChanged: (value) {}
+              obscureText: true,
+              error: vm.state.password.error,
+              onChanged: (value) {
+                vm.changePassword(value);
+              }
             ),              
           ),
           Container(
             margin: EdgeInsets.symmetric(horizontal: 15),
             child: DefaultTextField(
               label: 'Confirmar Password',
+              obscureText: true,
               icon: Icons.lock_outline,
-              onChanged: (value) {}
-            ),              
+              error: vm.state.confirmPassword.error,
+              onChanged: (value) {
+                vm.changeConfirmPassword(value);
+              }
+            ),
         ),
         Container(
           width: double.infinity,
           margin: EdgeInsets.symmetric(horizontal: 15, vertical: 30),
           child: ElevatedButton(
             onPressed: () {
-              
+              vm.register();              
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: BASE_COLOR
