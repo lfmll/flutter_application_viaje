@@ -1,11 +1,17 @@
-import 'package:flutter/material.dart' show BuildContext, ColorScheme, Colors, MaterialApp, StatelessWidget, ThemeData, Widget, runApp;
+import 'package:flutter/material.dart' show BuildContext, ColorScheme, Colors, MaterialApp, StatelessWidget, ThemeData, Widget, WidgetsFlutterBinding, runApp;
 import 'package:flutter_application_viaje/src/presentation/pages/auth/login/login_page.dart';
 import 'package:flutter_application_viaje/src/presentation/pages/auth/login/login_viewmodel.dart';
 import 'package:flutter_application_viaje/src/presentation/pages/auth/register/register_page.dart';
 import 'package:flutter_application_viaje/src/presentation/pages/auth/register/register_viewmodel.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

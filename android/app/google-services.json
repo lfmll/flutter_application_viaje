@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "117070778533",
+    "project_id": "flutter-mvvm-demo",
+    "storage_bucket": "flutter-mvvm-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:117070778533:android:254e2549c5c106ac057d4c",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_viaje"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2sPB5Z1YHrDqrWOHOXGFKCz2GFr7KNrY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
