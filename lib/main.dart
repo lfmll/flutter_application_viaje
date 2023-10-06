@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart' show BuildContext, ColorScheme, Colors, MaterialApp, StatelessWidget, ThemeData, Widget, WidgetsFlutterBinding, runApp;
+import 'package:flutter_application_viaje/injection.dart';
 import 'package:flutter_application_viaje/src/presentation/pages/auth/login/login_page.dart';
 import 'package:flutter_application_viaje/src/presentation/pages/auth/login/login_viewmodel.dart';
 import 'package:flutter_application_viaje/src/presentation/pages/auth/register/register_page.dart';
@@ -9,9 +11,7 @@ import 'firebase_options.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await configureDependecies();
   runApp(const MyApp());
 }
 
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context)=> LoginViewModel()),
+        ChangeNotifierProvider(create: (context)=> LoginViewModel(locator<FirebaseAuth>())),
         ChangeNotifierProvider(create: (context)=> RegisterViewModel())
       ],
       child: MaterialApp(

@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_viaje/src/presentation/pages/auth/login/login_state.dart';
 import 'package:flutter_application_viaje/src/presentation/utils/validation_item.dart';
@@ -8,6 +9,10 @@ class LoginViewModel extends ChangeNotifier {
   //Getter
   LoginState get state => _state;
 
+   //Firebase Auth
+  FirebaseAuth _firebaseAuth;
+  LoginViewModel(this._firebaseAuth);
+  
   //Setter  
   void changeEmail(String value) {
     final bool emailFormatValid = RegExp(r"^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$")
@@ -31,8 +36,13 @@ class LoginViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void login(){
+  void login() async{
     if (state.isValid()) {
+      final data = await _firebaseAuth.signInWithEmailAndPassword(
+        email: _state.email.value,
+        password: _state.password.value
+        );
+      print('Data: ${data}');
       print('Email: ${_state.email}');
       print('Password: ${_state.password}');  
     } else {

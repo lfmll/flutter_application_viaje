@@ -37,10 +37,19 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_custom_clippers: ^2.1.0
   provider: ^6.0.5
-  firebase_core: ^2.16.0
+  firebase_core: ^2.16.0  
+  firebase_auth: ^4.10.0
+  get_it: ^7.6.4
+  injectable: ^2.3.0
+
 dev_dependencies:
+  # add the generator to your dev_dependencies  
+  injectable_generator:  ^2.1.5
+  # add build runner if not already added  
+  build_runner: ^2.3.3
   flutter_test:
     sdk: flutter
+    
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
